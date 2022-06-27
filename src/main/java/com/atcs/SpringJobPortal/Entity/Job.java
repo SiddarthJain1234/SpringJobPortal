@@ -1,5 +1,7 @@
 package com.atcs.SpringJobPortal.Entity;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,8 +15,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 @Entity
 @Table(name="job")
 public class Job {
-	public Job(int job_id, String role, String location, int exp, String skills, int ctc, String deadline, String type,
-			String postdate, Company company) {
+	public Job(int job_id, String role, String location, int exp, String skills, int ctc, Date deadline, String type,
+			Date postdate, Company company) {
 		super();
 		this.job_id = job_id;
 		this.role = role;
@@ -44,11 +46,11 @@ String skills;
 	@Column
 int ctc;
 	@Column
-String deadline;
+Date deadline;
 	@Column
 String type;
 	@Column
-String postdate;
+Date postdate;
 	@ManyToOne
 	Company company;
 	public int getJob_id() {
@@ -87,10 +89,10 @@ String postdate;
 	public void setCtc(int ctc) {
 		this.ctc = ctc;
 	}
-	public String getDeadline() {
+	public Date getDeadline() {
 		return deadline;
 	}
-	public void setDeadline(String deadline) {
+	public void setDeadline(Date deadline) {
 		this.deadline = deadline;
 	}
 	public String getType() {
@@ -99,10 +101,10 @@ String postdate;
 	public void setType(String type) {
 		this.type = type;
 	}
-	public String getPostdate() {
+	public Date getPostdate() {
 		return postdate;
 	}
-	public void setPostdate(String postdate) {
+	public void setPostdate(Date postdate) {
 		this.postdate = postdate;
 	}
 	@JsonBackReference
