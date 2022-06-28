@@ -1,27 +1,24 @@
 package com.atcs.SpringJobPortal.Entity;
 
 import java.sql.Date;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 @Entity
-@Table(name="job")
+@Table(name = "job")
 public class Job {
+
+
+
 	
-	
+
 	public Job(int job_id, String role, String location, int exp, String skills, int ctc, Date deadline, String type,
-			Date postdate, String degree, List<User> user, Company company) {
+			Date postdate, String degree) {
 		super();
 		this.job_id = job_id;
 		this.role = role;
@@ -33,47 +30,32 @@ public class Job {
 		this.type = type;
 		this.postdate = postdate;
 		Degree = degree;
-		this.user = user;
-		this.company = company;
 	}
-	
-	
-	Job(){
-		
-	}
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-int job_id;
-	@Column
-String role;
-	@Column
-String location;
-	@Column
-int exp;
-	@Column
-String skills;
-	@Column
-int ctc;
-	@Column
-Date deadline;
-	@Column
-String type;
-	@Column
-Date postdate;
-	@Column
-	String Degree;
-	@ManyToMany(mappedBy= "job")
-	List<User> user;
-	@JsonManagedReference
-	public List<User> getUser() {
-		return user;
+	Job() {
+
 	}
 
-	public void setUser(List<User> user) {
-		this.user = user;
-	}
-	@ManyToOne
-	Company company;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	int job_id;
+	@Column
+	String role;
+	@Column
+	String location;
+	@Column
+	int exp;
+	@Column
+	String skills;
+	@Column
+	int ctc;
+	@Column
+	Date deadline;
+	@Column
+	String type;
+	@Column
+	Date postdate;
+	@Column
+	String Degree;
 	public int getJob_id() {
 		return job_id;
 	}
@@ -128,13 +110,6 @@ Date postdate;
 	public void setPostdate(Date postdate) {
 		this.postdate = postdate;
 	}
-	@JsonBackReference
-	public Company getCompany() {
-		return company;
-	}
-	public void setCompany(Company company) {
-		this.company = company;
-	}
 	public String getDegree() {
 		return Degree;
 	}
@@ -142,5 +117,7 @@ Date postdate;
 		Degree = degree;
 	}
 	
+	
 
+	
 }

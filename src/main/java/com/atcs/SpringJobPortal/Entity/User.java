@@ -1,23 +1,19 @@
 package com.atcs.SpringJobPortal.Entity;
 
 import java.sql.Date;
-import java.util.List;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 @Entity
 @Table(name="user")
 public class User {
 	public User(int user_id, String name, String email, int contactno, Date dob, String gender, String skillSet,
-			String address, int exp, List<Job> job) {
+			String address, int exp) {
 		super();
 		this.user_id = user_id;
 		this.name = name;
@@ -28,8 +24,12 @@ public class User {
 		SkillSet = skillSet;
 		Address = address;
 		this.exp = exp;
-		this.job = job;
 	}
+	User(){
+		
+	}
+	
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 int user_id;
@@ -49,8 +49,6 @@ String SkillSet;
 String Address;
 	@Column
 int exp;
-	@ManyToMany
-	List<Job> job;
 	public int getUser_id() {
 		return user_id;
 	}
@@ -104,13 +102,6 @@ int exp;
 	}
 	public void setExp(int exp) {
 		this.exp = exp;
-	}
-	@JsonBackReference
-	public List<Job> getJob() {
-		return job;
-	}
-	public void setJob(List<Job> job) {
-		this.job = job;
 	}
 	
 

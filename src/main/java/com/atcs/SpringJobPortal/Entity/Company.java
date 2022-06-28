@@ -1,28 +1,24 @@
 package com.atcs.SpringJobPortal.Entity;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import javax.persistence.Table;
 
 @Entity
 @Table(name="Company")
 public class Company {
 	
-	public Company(int id, String name, String about, String password, List<com.atcs.SpringJobPortal.Entity.Job> job) {
+	
+	
+	public Company(int id, String name, String about) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.about = about;
-		this.password = password;
-		Job = job;
 	}
 	Company(){
 		
@@ -35,17 +31,6 @@ int id;
 String name;
 	@Column
 String about;
-	@Column
-	String password;
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	@OneToMany(mappedBy="company")
-	List<Job> Job;
 	public int getId() {
 		return id;
 	}
@@ -64,12 +49,6 @@ String about;
 	public void setAbout(String about) {
 		this.about = about;
 	}
-	@JsonManagedReference
-	public List<Job> getJob() {
-		return Job;
-	}
-	public void setJob(List<Job> job) {
-		Job = job;
-	}
 	
+
 }
