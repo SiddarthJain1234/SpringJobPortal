@@ -6,8 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "job")
@@ -17,8 +19,9 @@ public class Job {
 
 	
 
+	
 	public Job(int job_id, String role, String location, int exp, String skills, int ctc, Date deadline, String type,
-			Date postdate, String degree) {
+			Date postdate, String degree, Company company) {
 		super();
 		this.job_id = job_id;
 		this.role = role;
@@ -30,6 +33,7 @@ public class Job {
 		this.type = type;
 		this.postdate = postdate;
 		Degree = degree;
+		this.company = company;
 	}
 	Job() {
 
@@ -115,6 +119,15 @@ public class Job {
 	}
 	public void setDegree(String degree) {
 		Degree = degree;
+	}
+	@ManyToOne
+	Company company;
+	@JsonBackReference
+	public Company getCompany() {
+		return company;
+	}
+	public void setCompany(Company company) {
+		this.company = company;
 	}
 	
 	
