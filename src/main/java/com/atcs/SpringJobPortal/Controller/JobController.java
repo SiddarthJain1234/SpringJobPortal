@@ -25,6 +25,10 @@ JobRepo jr;
 public List<Job> get(){
 	return jr.findAll();
 }
+@GetMapping("/{exp}")
+public List<Job> getbyexp(@PathVariable int exp){
+	return jr.findAll();
+}
 @PostMapping("/")
 public List<Job>post(@RequestBody Job j){
 	jr.save(j);
