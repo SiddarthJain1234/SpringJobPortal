@@ -15,11 +15,13 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Entity
 @Table(name="Company")
 public class Company {
-	public Company(int id, String name, String about, List<com.atcs.SpringJobPortal.Entity.Job> job) {
+	
+	public Company(int id, String name, String about, String password, List<com.atcs.SpringJobPortal.Entity.Job> job) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.about = about;
+		this.password = password;
 		Job = job;
 	}
 	Company(){
@@ -33,6 +35,15 @@ int id;
 String name;
 	@Column
 String about;
+	@Column
+	String password;
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	@OneToMany(mappedBy="company")
 	List<Job> Job;
 	public int getId() {

@@ -1,22 +1,27 @@
 package com.atcs.SpringJobPortal.Entity;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="job")
 public class Job {
+	
+	
 	public Job(int job_id, String role, String location, int exp, String skills, int ctc, Date deadline, String type,
-			Date postdate, Company company) {
+			Date postdate, String degree, List<User> user, Company company) {
 		super();
 		this.job_id = job_id;
 		this.role = role;
@@ -27,8 +32,12 @@ public class Job {
 		this.deadline = deadline;
 		this.type = type;
 		this.postdate = postdate;
+		Degree = degree;
+		this.user = user;
 		this.company = company;
 	}
+	
+	
 	Job(){
 		
 	}
@@ -51,6 +60,18 @@ Date deadline;
 String type;
 	@Column
 Date postdate;
+	@Column
+	String Degree;
+	@ManyToMany(mappedBy= "job")
+	List<User> user;
+	@JsonManagedReference
+	public List<User> getUser() {
+		return user;
+	}
+
+	public void setUser(List<User> user) {
+		this.user = user;
+	}
 	@ManyToOne
 	Company company;
 	public int getJob_id() {
@@ -113,6 +134,12 @@ Date postdate;
 	}
 	public void setCompany(Company company) {
 		this.company = company;
+	}
+	public String getDegree() {
+		return Degree;
+	}
+	public void setDegree(String degree) {
+		Degree = degree;
 	}
 	
 
