@@ -1,5 +1,6 @@
 package com.atcs.SpringJobPortal.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +26,34 @@ JobRepo jr;
 public List<Job> get(){
 	return jr.findAll();
 }
-@GetMapping("/{exp}")
+@GetMapping("/exp/{exp}")
 public List<Job> getbyexp(@PathVariable int exp){
-	return jr.findAll();
+	List<Job> list=jr.findAll();
+	
+	List<Job> listFinal=new ArrayList<Job>();
+	
+	for(int i=0; i<list.size(); i++) {
+		if(list.get(i).getExp()<=exp) {
+			listFinal.add(list.get(i));
+		}
+	}
+	return listFinal;
 }
+
+
+@GetMapping("/loc/{loc}")
+public List<Job> getbyloc(@PathVariable String loc){
+	List<Job> list=jr.findAll();
+	
+	List<Job> listFinal=new ArrayList<Job>();
+	for(int i=0; i<list.size(); i++) {
+		if(list.get(i).getLocation().equals(loc)) {
+			listFinal.add(list.get(i));
+		}
+	}
+	return listFinal;
+}
+
 @PostMapping("/")
 public List<Job>post(@RequestBody Job j){
 	jr.save(j);
