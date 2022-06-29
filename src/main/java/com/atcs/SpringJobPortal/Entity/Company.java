@@ -18,15 +18,15 @@ public class Company {
 	
 	
 	
-	
-	public Company(int id, String name, String about, List<Job> job) {
+		public Company(int id, String name, String about, List<Job> job, List<Message> message) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.about = about;
 		this.job = job;
+		this.message = message;
 	}
-	Company(){
+		Company(){
 		
 	}
 	
@@ -63,6 +63,15 @@ String about;
 	}
 	public void setJob(List<Job> job) {
 		this.job = job;
+	}
+	
+	@OneToMany
+	List<Message>message;
+	public List<Message> getMessage() {
+		return message;
+	}
+	public void setMessage(List<Message> message) {
+		this.message = message;
 	}
 	
 
