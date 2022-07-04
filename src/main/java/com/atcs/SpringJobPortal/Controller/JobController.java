@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,7 @@ import com.atcs.SpringJobPortal.Repo.JobRepo;
 public class JobController {
 @Autowired
 JobRepo jr;
+
 
 @GetMapping("/")
 public List<Job> get(){
@@ -53,6 +55,18 @@ public List<Job> getbyloc(@PathVariable String loc){
 	}
 	return listFinal;
 }
+@GetMapping("/sort/{order}")
+public List<Job> getbyorder(@PathVariable String order){
+	return jr.findAll(Sort.by(order));
+	
+}
+
+
+
+
+
+
+
 
 @PostMapping("/")
 public List<Job>post(@RequestBody Job j){

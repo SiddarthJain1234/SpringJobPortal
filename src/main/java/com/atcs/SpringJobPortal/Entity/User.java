@@ -1,13 +1,14 @@
 package com.atcs.SpringJobPortal.Entity;
 
 import java.sql.Date;
-
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -16,10 +17,6 @@ import javax.persistence.Table;
 @Table(name="user")
 public class User {
 	
-	
-
-	
-
 	
 
 
@@ -36,6 +33,7 @@ public class User {
 		Address = address;
 		this.exp = exp;
 		this.message = message;
+		
 	}
 
 
@@ -180,7 +178,6 @@ int exp;
 	public void setMessage(Message message) {
 		this.message = message;
 	}
-	
 	
 	
 	}

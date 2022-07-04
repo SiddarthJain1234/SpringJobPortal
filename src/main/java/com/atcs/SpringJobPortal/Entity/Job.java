@@ -19,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 @Table(name = "job")
 public class Job {
 
+	
 	public Job(int job_id, String role, String location, int exp, String skills, int ctc, Date deadline, String type,
 			Date postdate, String degree, Company company, List<User> user) {
 		super();
