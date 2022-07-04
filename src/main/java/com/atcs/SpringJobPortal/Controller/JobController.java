@@ -55,18 +55,6 @@ public List<Job> getbyloc(@PathVariable String loc){
 	}
 	return listFinal;
 }
-@GetMapping("/sort/{order}")
-public List<Job> getbyorder(@PathVariable String order){
-	return jr.findAll(Sort.by(order));
-	
-}
-
-
-
-
-
-
-
 
 @PostMapping("/")
 public List<Job>post(@RequestBody Job j){
