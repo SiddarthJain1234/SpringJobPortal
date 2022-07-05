@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,55 +19,56 @@ import com.atcs.SpringJobPortal.Repo.JobRepo;
 @RestController
 @RequestMapping("/job")
 public class JobController {
-@Autowired
-JobRepo jr;
+	@Autowired
+	JobRepo jr;
 
-
-@GetMapping("/")
-public List<Job> get(){
-	return jr.findAll();
-}
-@GetMapping("/exp/{exp}")
-public List<Job> getbyexp(@PathVariable int exp){
-	List<Job> list=jr.findAll();
-	
-	List<Job> listFinal=new ArrayList<Job>();
-	
-	for(int i=0; i<list.size(); i++) {
-		if(list.get(i).getExp()<=exp) {
-			listFinal.add(list.get(i));
-		}
+	@GetMapping("/")
+	public List<Job> get() {
+		return jr.findAll();
 	}
-	return listFinal;
-}
 
+	@GetMapping("/exp/{exp}")
+	public List<Job> getbyexp(@PathVariable int exp) {
+		List<Job> list = jr.findAll();
 
-@GetMapping("/loc/{loc}")
-public List<Job> getbyloc(@PathVariable String loc){
-	List<Job> list=jr.findAll();
-	
-	List<Job> listFinal=new ArrayList<Job>();
-	for(int i=0; i<list.size(); i++) {
-		if(list.get(i).getLocation().equals(loc)) {
-			listFinal.add(list.get(i));
+		List<Job> listFinal = new ArrayList<Job>();
+
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getExp() <= exp) {
+				listFinal.add(list.get(i));
+			}
 		}
+		return listFinal;
 	}
-	return listFinal;
-}
 
-@PostMapping("/")
-public List<Job>post(@RequestBody Job j){
-	jr.save(j);
-	return jr.findAll();
-}
-@PutMapping("/")
-public List<Job>put(@RequestBody Job je){
-	jr.save(je);
-	return jr.findAll();
-}
-@DeleteMapping("/{id}")
-public List<Job>delete(@PathVariable int id){
-	jr.deleteById(id);
-	return jr.findAll();
-}
+	@GetMapping("/loc/{loc}")
+	public List<Job> getbyloc(@PathVariable String loc) {
+		List<Job> list = jr.findAll();
+
+		List<Job> listFinal = new ArrayList<Job>();
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getLocation().equals(loc)) {
+				listFinal.add(list.get(i));
+			}
+		}
+		return listFinal;
+	}
+
+	@PostMapping("/")
+	public List<Job> post(@RequestBody Job j) {
+		jr.save(j);
+		return jr.findAll();
+	}
+
+	@PutMapping("/")
+	public List<Job> put(@RequestBody Job je) {
+		jr.save(je);
+		return jr.findAll();
+	}
+
+	@DeleteMapping("/{id}")
+	public List<Job> delete(@PathVariable int id) {
+		jr.deleteById(id);
+		return jr.findAll();
+	}
 }

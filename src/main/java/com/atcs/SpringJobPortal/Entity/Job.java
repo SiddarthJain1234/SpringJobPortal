@@ -133,6 +133,7 @@ public class Job {
 	@ManyToMany
 	List<User> user;
 	
+	
 	public List<User> getUser() {
 		return user;
 	}

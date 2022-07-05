@@ -8,17 +8,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="user")
+@Table(name = "user")
 public class User {
-	
-	
-
 
 	public User(int user_id, String name, String email, int contactno, Date dob, String gender, String skillSet,
 			String address, int exp, Message message) {
@@ -33,151 +29,118 @@ public class User {
 		Address = address;
 		this.exp = exp;
 		this.message = message;
-		
+
 	}
 
+	User() {
 
-
-	User(){
-		
 	}
-	
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-int user_id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	int user_id;
 	@Column
-String name;
+	String name;
 	@Column
-String email;
+	String email;
 	@Column
-int contactno;
+	int contactno;
 	@Column
-Date dob;
+	Date dob;
 	@Column
-String gender;
+	String gender;
 	@Column
-String SkillSet;
+	String SkillSet;
 	@Column
-String Address;
+	String Address;
 	@Column
-int exp;
+	int exp;
+
 	public int getUser_id() {
 		return user_id;
 	}
-
-
 
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
 	}
 
-
-
 	public String getName() {
 		return name;
 	}
-
-
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
-
-
 	public String getEmail() {
 		return email;
 	}
-
-
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-
-
 	public int getContactno() {
 		return contactno;
 	}
-
-
 
 	public void setContactno(int contactno) {
 		this.contactno = contactno;
 	}
 
-
-
 	public Date getDob() {
 		return dob;
 	}
-
-
 
 	public void setDob(Date dob) {
 		this.dob = dob;
 	}
 
-
-
 	public String getGender() {
 		return gender;
 	}
-
-
 
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
-
-
 	public String getSkillSet() {
 		return SkillSet;
 	}
-
-
 
 	public void setSkillSet(String skillSet) {
 		SkillSet = skillSet;
 	}
 
-
-
 	public String getAddress() {
 		return Address;
 	}
-
-
 
 	public void setAddress(String address) {
 		Address = address;
 	}
 
-
-
 	public int getExp() {
 		return exp;
 	}
 
-
-
 	public void setExp(int exp) {
 		this.exp = exp;
 	}
+
 	@OneToOne
 	Message message;
+
 	public Message getMessage() {
 		return message;
 	}
 
-
+//
+//	@ManyToMany
+//	List<Job> jobs;
 
 	public void setMessage(Message message) {
 		this.message = message;
 	}
-	
-	
-	}
+
+}
